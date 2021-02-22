@@ -6,7 +6,7 @@
 /*   By: gcyril <gcyril@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 08:58:07 by home              #+#    #+#             */
-/*   Updated: 2021/02/05 15:18:42 by gcyril           ###   ########.fr       */
+/*   Updated: 2021/02/22 14:06:34 by gcyril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,6 @@
 # define RIGHT 2 //d
 # define ROTRIGHT 124 //right arrow key
 # define ROTLEFT 123 //left arrow key
-
-// define keys X library ??
-#define XK_w		0x077
-#define XK_a		0x061
-#define XK_s		0x073
-#define XK_d		0x064
 
 typedef struct		s_data
 {

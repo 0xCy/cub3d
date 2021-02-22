@@ -6,7 +6,7 @@
 /*   By: gcyril <gcyril@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 09:49:36 by home              #+#    #+#             */
-/*   Updated: 2021/01/23 12:15:26 by gcyril           ###   ########.fr       */
+/*   Updated: 2021/02/22 11:49:43 by gcyril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,7 @@ int		keypress(int key, t_param *p)
 	else if (key == ROTLEFT)
 		p->pos->rotleft = 1;
 	else if (key == ESC)
-	{
-		mlx_destroy_window(p->data->mlx_ptr, p->data->win_ptr);
-		printf("BYE");
-	}
+		exit(EXIT_SUCCESS);
 	return (0);
 
 }

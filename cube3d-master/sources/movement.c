@@ -6,7 +6,7 @@
 /*   By: gcyril <gcyril@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 12:21:38 by gcyril            #+#    #+#             */
-/*   Updated: 2021/02/05 18:24:47 by gcyril           ###   ########.fr       */
+/*   Updated: 2021/02/22 10:43:51 by gcyril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,12 @@ void	rotation(t_pos *pos)
 }
 void	move_updown(t_pos *pos, t_mapdata *map)
 {
-	//printf("%f\n %f\n",(pos->px / 13), pos->py / 7);
-			//printf("%c\n c'est ici", map->map[(int)(pos->px / 25)][(int)pos->py / 13]);
 	if (pos->forward)
 	{
-		if (map->map[(int)(pos->px / 40)][(int)pos->py / 40] == '0')
-		{
 			pos->px += pos->pdx * speed;
 			pos->py += pos->pdy * speed;
-		}
-		//if (map->map[(int)(pos->px)][(int)(pos->py + (int)(pos->pdy * speed))] == '0')
-		drawPlayer(pos->px, pos->py);
 	}
+	drawPlayer(pos->px, pos->py);
 	if (pos->backward)
 	{
 		pos->px -= pos->pdx * speed;
