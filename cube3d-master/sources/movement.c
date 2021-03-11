@@ -6,7 +6,7 @@
 /*   By: gcyril <gcyril@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 12:21:38 by gcyril            #+#    #+#             */
-/*   Updated: 2021/02/22 10:43:51 by gcyril           ###   ########.fr       */
+/*   Updated: 2021/03/11 12:04:11 by gcyril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int speed = 2;
 
-int		can_move(int pos)
+int		can_move(int position)
 {
-	if (pos == '1')
+	if (position == '1')
 		return (0);
 	else
 		return (1);
@@ -43,19 +43,34 @@ void	rotation(t_pos *pos)
 		drawPlayer(pos->px, pos->py);
 	}
 }
+
 void	move_updown(t_pos *pos, t_mapdata *map)
 {
 	if (pos->forward)
 	{
+		if (map->map[(int)(map->wally + (pos->pdy * speed))][(int)map->wallx] == '0')
+		{
 			pos->px += pos->pdx * speed;
+			drawPlayer(pos->px, pos->py);
+		}
+		if (map->map[(int)(map->wally)][(int)(map->wallx + (pos->pdx * speed))] == '0')
+		{
 			pos->py += pos->pdy * speed;
+			drawPlayer(pos->px, pos->py);
+		}
 	}
-	drawPlayer(pos->px, pos->py);
 	if (pos->backward)
 	{
-		pos->px -= pos->pdx * speed;
-		pos->py -= pos->pdy * speed;
-		drawPlayer(pos->px, pos->py);
+		if (map->map[(int)(map->wally - (pos->pdy * speed))][(int)map->wallx] == '0')
+		{
+			pos->px -= pos->pdx * speed;
+			drawPlayer(pos->px, pos->py);
+		}
+		if (map->map[(int)(map->wally)][(int)(map->wallx + (pos->pdx * speed))] == '0')
+		{
+			pos->py -= pos->pdy * speed;
+			drawPlayer(pos->px, pos->py);
+		}
 	}
 }
 
@@ -63,15 +78,29 @@ void	move_leftright(t_pos *pos, t_mapdata *map)
 {
 	if (pos->left == 1)
 	{
-		pos->px -= -pos->pdy * speed;
-		pos->py -= pos->pdx * speed;
-		drawPlayer(pos->px, pos->py);
+		if (map->map[(int)(map->wally - (-pos->pdy * speed))][(int)map->wallx] == '0')
+		{
+			pos->px -= -pos->pdy * speed;
+			drawPlayer(pos->px, pos->py);
+		}
+		if (map->map[(int)(map->wally)][(int)(map->wallx - (-pos->pdy * speed))] == '0')
+		{
+			pos->py -= pos->pdx * speed;
+			drawPlayer(pos->px, pos->py);
+		}
 	}
 	if (pos->right == 1)
 	{
-		pos->px += -pos->pdy * speed;
-		pos->py += pos->pdx * speed;
-		drawPlayer(pos->px, pos->py);
+		if (map->map[(int)(map->wallx)][(int)(map->wally - pos->pdx * speed)] == '0')
+		{
+			pos->px += -pos->pdy * speed;
+			drawPlayer(pos->px, pos->py);
+		}
+		if (map->map[(int)(map->wally)][(int)(map->wallx + pos->pdy * speed)] == '0')
+		{
+			pos->py += pos->pdx * speed;
+			drawPlayer(pos->px, pos->py);
+		}
 	}
 }
 

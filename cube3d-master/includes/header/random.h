@@ -6,7 +6,7 @@
 /*   By: gcyril <gcyril@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 08:58:07 by home              #+#    #+#             */
-/*   Updated: 2021/02/22 14:06:34 by gcyril           ###   ########.fr       */
+/*   Updated: 2021/03/11 11:43:37 by gcyril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct		s_data
 
 t_data data;
 
-typedef	struct		s_imgata
+typedef	struct		s_imgdata
 {
 	void	*img_ptr;
 	char	*addr;
@@ -72,7 +72,10 @@ typedef struct		s_mapdata
 	int		sizeHeight;
 	int		sizeWidth;
 	int		tmp;
-	char	**map;
+	int		wallx;
+	int		wally;
+	int		wallhit;
+	char	**map; //parsing error map[x][y] is actually map[y][x] ^^'
 }					t_mapdata;
 t_mapdata map;
 
@@ -108,11 +111,11 @@ typedef struct		s_rgb
 
 typedef struct		s_pos
 {
-	float	px;		//player position on x axis
-	float	py;		//player position on y axis
-	float	pdx;	//player direction on x axis
-	float	pdy;	//player direction on y axis
-	float	pa;		//player angle
+	double	px;		//player position on x axis
+	double	py;		//player position on y axis
+	double	pdx;	//player direction on x axis
+	double	pdy;	//player direction on y axis
+	double	pa;		//player angle
 	char	forward;
 	char	backward;
 	char	right;
@@ -141,7 +144,7 @@ t_ray ray;
 int pcolor;
 
 
-void	drawPlayer(float px, float py);
+void	drawPlayer(double px, double py);
 int		convert(int r, int g, int b);
 void	size1();
 void	init();
