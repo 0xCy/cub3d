@@ -6,7 +6,7 @@
 /*   By: gcyril <gcyril@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 08:58:07 by home              #+#    #+#             */
-/*   Updated: 2021/03/11 11:43:37 by gcyril           ###   ########.fr       */
+/*   Updated: 2021/03/22 16:15:46 by gcyril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@
 # include <fcntl.h>
 #include "libft.h"
 # define PI 3.14159
-# define COLOR 5832883
+# define DR 0.0174533 //one degree in radians to cast rays
+# define COLOR 1832883
 # define BUFFER_SIZE 32
 # define mapHEIGHT 24
 # define mapWIDTH 24
@@ -47,7 +48,7 @@ typedef struct		s_data
 
 t_data data;
 
-typedef	struct		s_imgdata
+typedef	struct		s_imgata
 {
 	void	*img_ptr;
 	char	*addr;
@@ -72,10 +73,10 @@ typedef struct		s_mapdata
 	int		sizeHeight;
 	int		sizeWidth;
 	int		tmp;
-	int		wallx;
-	int		wally;
-	int		wallhit;
-	char	**map; //parsing error map[x][y] is actually map[y][x] ^^'
+	int		size;
+	char	**map;
+	int		x2;
+	int 	y2;
 }					t_mapdata;
 t_mapdata map;
 
@@ -95,7 +96,6 @@ typedef struct		s_parse
 	int		resWidth;
 	char	*resParse;
 	char	*colorParse;
-
 	int		errorNumber;
 }					t_parse;
 
@@ -111,43 +111,62 @@ typedef struct		s_rgb
 
 typedef struct		s_pos
 {
-	double	px;		//player position on x axis
-	double	py;		//player position on y axis
-	double	pdx;	//player direction on x axis
-	double	pdy;	//player direction on y axis
-	double	pa;		//player angle
+	float	px;		//player position on x axis
+	float	py;		//player position on y axis
+	float	tmppx;
+	float	tmppy;
+	float	tmppx2;
+	float	tmppy2;
+	float	pdx;	//player direction on x axis
+	float	pdy;	//player direction on y axis
+	float	pa;		//player angle
+	int		x;
+	int		y;
 	char	forward;
 	char	backward;
 	char	right;
 	char	left;
 	char	rotright;
 	char	rotleft;
+	int		collisionx;
+	int		collisiony;
 }					t_pos;
 t_pos pos;
+
+typedef struct		s_ray
+{
+	int				fov;
+	int				angle;
+	int				max;
+	int				min;
+	int				wallhitdist;
+	int				maxdistx;
+	int				maxdisty;
+}					t_ray;
+
+t_ray ray;
 
 typedef struct		s_param
 {
 	t_data			*data;
 	t_pos			*pos;
 	t_mapdata		*map;
+	t_ray			*ray;
+	t_parse			*parse;
 	int				i;
 	int				j;
 }					t_param;
 
-/*typedef struct		s_ray;
-{
-	float	ra;
-}					t_ray;
-t_ray ray;
-*/
-
 int pcolor;
 
 
-void	drawPlayer(double px, double py);
+void	drawPlayer(float px, float py);
+void	drawRays();
+void	rotation(t_pos *pos);
 int		convert(int r, int g, int b);
 void	size1();
 void	init();
+void	ft_laser();
 void	drawMap();
 void	drawMap2(int a, int b);
 int		keypress(int key, t_param *p);

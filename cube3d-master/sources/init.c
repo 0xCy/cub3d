@@ -6,7 +6,7 @@
 /*   By: gcyril <gcyril@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 17:14:42 by home              #+#    #+#             */
-/*   Updated: 2021/01/22 13:23:43 by gcyril           ###   ########.fr       */
+/*   Updated: 2021/03/22 13:48:41 by gcyril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	init()
 {
 
 	pcolor = 0xFFFFFF;
-	pos.px = 533;
-	pos.py = 233;
+	pos.px = map.x2 * (parse.resHeight / map.sizeHeight);
+	pos.py = map.y2 * (parse.resWidth / map.sizeWidth);
 	parse.r = 0;
 	parse.g = 0;
 	parse.b = 0;

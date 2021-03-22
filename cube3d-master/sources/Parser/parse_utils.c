@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samuelchetrit <samuelchetrit@student.42    +#+  +:+       +#+        */
+/*   By: gcyril <gcyril@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 16:28:59 by home              #+#    #+#             */
-/*   Updated: 2020/12/18 04:33:05 by samuelchetr      ###   ########.fr       */
+/*   Updated: 2021/03/18 15:42:52 by gcyril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int		ft_atoi_cub(char *str)
 {
 	int x;
     int res;
-	
-	res = 0;	
+
+	res = 0;
 	x = 0;
 	while (str[x] == ' ' || str[x] == '\t' || str[x] == '\n' || str[x] == '\r'
 		 || str[x] == '\v' || str[x] == '\f' || str[x] == 'R')
@@ -40,19 +40,19 @@ void		split_rgb(char *line)
 		if (line[x] > '0' && line[x] < '9')
 		{
 			while (line[x] && line[x] >= '0' && line[x] <= '9')
-			{	
+			{
 				parse.r = parse.r * 10 + (line[x] -  48);
 				x++;
 			}
 			x++;
 			while (line[x] && line[x] >= '0' && line[x] <= '9')
-			{	
+			{
 				parse.g = parse.g * 10 + (line[x] -  48);
 				x++;
 			}
 			x++;
 			while (line[x] && line[x] >= '0' && line[x] <= '9')
-			{	
+			{
 				parse.b = parse.b * 10 + (line[x] -  48);
 				x++;
 			}

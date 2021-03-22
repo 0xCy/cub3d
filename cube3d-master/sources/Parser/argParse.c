@@ -6,7 +6,7 @@
 /*   By: gcyril <gcyril@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/09 10:53:26 by home              #+#    #+#             */
-/*   Updated: 2021/01/05 11:15:58 by gcyril           ###   ########.fr       */
+/*   Updated: 2021/03/18 15:42:46 by gcyril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,23 @@ void		arg_parse(int fd, char *line)
 		if (line[0] == '1')
 		{
 			map.map[x] = malloc(sizeof(char) * (ft_strlen(line) + 1));
-			if (map.sizeHeight < ft_strlen(line))
-				map.sizeHeight = ft_strlen(line);
+			if (map.sizeWidth < ft_strlen(line))
+				map.sizeWidth = ft_strlen(line);
 			map.map[x] = line;
+			while(map.map[x][y])
+			{
+				if (map.map[x][y] == '2')
+				{
+					map.x2 = x;
+					map.y2 = y;
+				}
+				y++;
+			}
+			y = 0;
 			x++;
 		}
 	}
-	map.sizeWidth = x + 1;
+	map.sizeHeight = x;
 	map.map[x] = line;
 	map.map[x + 1] = NULL;
 	free(parse.resParse);

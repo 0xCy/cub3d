@@ -6,7 +6,7 @@
 /*   By: gcyril <gcyril@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 12:16:32 by home              #+#    #+#             */
-/*   Updated: 2021/01/07 11:50:01 by gcyril           ###   ########.fr       */
+/*   Updated: 2021/03/18 15:40:42 by gcyril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	drawMap(void)
 {
 	map.line = 0;
 	map.column = 0;
-	while (map.line < map.sizeWidth)
+	while (map.line < map.sizeHeight)
 	{
 		while (map.map[map.line][map.column])
 		{
@@ -43,8 +43,8 @@ void	drawMap(void)
 
 void	drawMap2(int a, int b)
 {
-	map.widthF = parse.resWidth / map.sizeWidth;
-	map.heightF = parse.resHeight/ map.sizeHeight;
+	map.widthF = parse.resWidth / map.sizeHeight;
+	map.heightF = parse.resHeight/ map.sizeWidth;
 	map.mapWidth = map.widthF + (map.widthF * a);
 	map.mapHeight = map.heightF + (map.heightF * b);
 	map.width = 0 + (map.widthF * a);
